@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+ <h1>New resume</h1>
+    <form method="POST" class="post-form" action = "/new_resume" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        {{ formset.management_form }}
+                {{ formset.non_form_errors }}
+        {% for projectform in formset %}
+                    {{ projectform.as_p }}
+         {% endfor %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

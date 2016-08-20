@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+	<p>Your resume</p>
+	{% if r.status %}
+		<p>Found your resume</p>
+		<p>{{ r.resume.name }}</p>
+		<p>Click <a href = "/edit_resume">here</a> to edit your resume</p>
+		<p>Click <a href = "/edit_resume">here</a> to delete your resume</p>
+	{% else %}
+		<p>Your resume was not found</p>
+		<p>Click <a href = "/new_resume"> here </a> to generate new resume.</p>
+	{% endif %}
+{% endblock %}
