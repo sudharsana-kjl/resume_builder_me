@@ -5,7 +5,6 @@ from .models import Resume, Project
 from .forms import ResumeForm, ProjectFormSet
 
 
-#from django.views.generic import CreateView
 
 def index(request):
 	return render(request, 'index.html')
@@ -56,19 +55,7 @@ def new_resume(request):
 					formset.save()
 					return HttpResponse("Your resume was saved")
 		return render(request, 'new_resume.html', {'form' : form, 'formset' : formset})
-			#formset = project_formset(request.POST)
-			#project_form = ProjectFormSet(request.POST)
-			#print(project_form)
-			#if resume_form.is_valid() and formset.is_valid():
-				
-				#resume = resume_form.save(commit = False)
-				#projectsave = project_form.save(commit=False)
-				#resume.user = request.user
-				#resume.save()
-				#formset.save()
-				
-				#return HttpResponse("Your resume was saved")
-		#return render(request, 'new_resume.html', {'form' : resume_form, 'formset' : project_formset})
+			
 	return HttpResponse("Not valid")
 
 def edit_resume(request):
