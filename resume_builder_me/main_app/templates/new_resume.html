@@ -1,13 +1,56 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
+<html>
+<body>
  <h1>New resume</h1>
     <form method="POST" class="post-form" action = "/new_resume" enctype="multipart/form-data">{% csrf_token %}
+        <div style="width:50%; float:left;">
         {{ form.as_p }}
+        <button type="submit" class="save btn btn-default" id="submit-btn">Save</button>
+    </div>
+        <div id="abc" >
         {{ formset.management_form }}
                 {{ formset.non_form_errors }}
-        {% for projectform in formset %}
+                <h4>Projects</h4> <button onclick="myfunc()">
+                    <img src="{% static 'images/add-icon.png' %}" style="height:3em; width:3em;">
+                </button>
+                
+                    {% for projectform in formset %}
+        <div class='formset' style='visibility: hidden;'>
                     {{ projectform.as_p }}
+                    
+                    </div>
          {% endfor %}
-        <button type="submit" class="save btn btn-default">Save</button>
+      
+        
+    </div>
     </form>
+    <script>
+    //var btn = document.getElementbyId("submit-btn");
+    //var project = document.getElementById("abc");
+   // project.innerHTML = " 
+      //   ";
+
+    var i=0;
+    var x = document.querySelectorAll(".formset");
+    //var div = document.createElement("div");
+   // div.innerHTML = "";
+   // x[0].style.backgroundColor = "red";
+   x[0].style.visibility = "visible";
+//console.log(x[0]);
+i++;
+function myfunc(){
+    if(i==4)
+        alert("Max four projects are allowed");
+    x[i].style.visibility = "visible";
+    i++;
+}
+
+</script>
 {% endblock %}
+</body>
+</html>
+
+
+
