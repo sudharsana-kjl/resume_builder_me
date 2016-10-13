@@ -3,6 +3,13 @@
 <!--{% load materializecss %}-->
 {% block content %}
 <html>
+<style>
+ #submit-btn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+</style>
 <body>
  <!--<h1>New resume</h1>-->
  <div class="container">
@@ -10,10 +17,12 @@
         <div class="row">
         <div class="col s12 card white" style="margin-top:12%;margin-left:4%;padding:2%;">
         {{ form|materializecss }}
-        <button type="submit" class="save btn btn-default" id="submit-btn">Save</button>
+        
         </div>
         </div>
 </div>
+<button type="submit" class="save btn btn-large red" id="submit-btn" >Click Here to Submit</button>
+
 <div class="container">
 
     <div clas="row" style="float:left">
@@ -72,6 +81,7 @@
 
     
     </form>
+
     <script>
     //var btn = document.getElementbyId("submit-btn");
     //var project = document.getElementById("abc");
@@ -119,6 +129,10 @@ $(document).ready(function() {
         }
     }
 });
+
+
+   // $('#submit-btn').pushpin({ top: $('#submit-btn').offset().top });
+
 });
 
 /*function add_inline_form(prefix) {
@@ -152,6 +166,31 @@ $('.add-inline').each(function () {
 
 
 </script>
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">NITT Resume Builder</h5>
+                <p class="grey-text text-lighten-4">Made by Spider</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../logout">Log Out</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Connect with 
+            <a class="grey-text text-lighten-4 right" href="http://spider.nitt.edu">Spider</a>!
+            </div>
+          </div>
+        </footer>
 <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
 

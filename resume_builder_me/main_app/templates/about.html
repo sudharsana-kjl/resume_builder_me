@@ -1,6 +1,71 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
-<p>
-	This is the about page
-</p>
+<div class="container " >
+	<div class="row">
+		
+		<div class="col s12 right-align">
+			
+		<img class="circle responsive-img" src="{% static 'images/resume.jpg' %}"style="max-width:25%;margin-top:10%;margin-right:5%;margin-left:-10%;float:left;">
+			<p itemprop="description" style="font-size: 47px;" class="thin">
+				<strong class="white-text bold">NITT Resume Builder</strong>
+				<span class="white-text  thin">aims at making resume easier according to the required format. </span>
+			</p>
+			<div class="divider"></div>
+		
+		</div>
+		
+		
+		<div class="col s12 center-align">
+
+			<p itemprop="description" style="font-size: 47px;" class="thin">
+				<strong class="white-text bold">TNP</strong>
+				<span class="white-text  thin">(Training and Placement Cell) of</span>
+				<strong class="white-text bold">NIT Trichy</strong>
+				<span class="white-text  thin">follows a certain format of resume very</span>
+				<strong class="white-text bold">strictly.</strong>
+			</p>
+			
+			<div class="divider"></div>
+		</div>
+		
+		<div class="col s12 left-align" style="margin-left:-15%;">
+
+			<p itemprop="description" style="font-size: 47px;float:left;" class="thin">
+				<strong class="white-text bold">NITT Resume Builder</strong>
+				<span class="white-text  thin">takes your input and generates a</span>
+				<strong class="white-text bold">resume</strong>
+				<span class="white-text  thin">for you in</span>
+				<strong class="white-text bold">just a click.</strong>
+			</p>
+			<img class="circle responsive-img" src="{% static 'images/resume_one.jpg' %}"style="max-width:25%;margin-top:-85%;margin-left:100%;">
+		</div>
+
+	</div>
+</div>
+	<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">NITT Resume Builder</h5>
+                <p class="grey-text text-lighten-4">Made by Spider</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../logout">Log Out</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Connect with 
+            <a class="grey-text text-lighten-4 right" href="http://spider.nitt.edu">Spider</a>!
+            </div>
+          </div>
+        </footer>
 {% endblock %}

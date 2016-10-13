@@ -1,13 +1,91 @@
 {% extends 'base.html' %}
 {% block content %}
-	<p>Your resume</p>
+	<p></p>
 	{% if r.status %}
-		<p>Found your resume</p>
-		<p>{{ r.resume.name }}</p>
-		<p>Click <a href = "/edit_resume">here</a> to edit your resume</p>
-		<p>Click <a href = "/edit_resume">here</a> to delete your resume</p>
+	<div class="container " >
+	<div class="row">
+		<div class="col s12 center-align">
+			<p itemprop="description" style="font-size: 47px;" class="thin">
+				<strong class="white-text bold">Found</strong>
+				<span class="white-text  thin"> your resume, </span>
+
+				<strong class="white-text bold">{{ r.resume.name }}!</strong>
+				
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 center-align">
+		<br>
+		 <a href = "/edit_resume" class="btn-large white teal-text text-lighten-1 left">Edit your resume</a>
+		<a href = "/edit_resume" class="btn-large white teal-text text-lighten-1 right">Delete your resume</a>
+				
+			</div>
+		
+
+	</div>
+</div>
+		
+		
 	{% else %}
-		<p>Your resume was not found</p>
-		<p>Click <a href = "/new_resume"> here </a> to generate new resume.</p>
+	<div class="container " >
+	<div class="row">
+		<div class="col s12 center-align">
+			<p itemprop="description" style="font-size: 47px;" class="thin">
+				<strong class="white-text bold">Oops!</strong>
+				<span class="white-text  thin">Your resume was </span>
+				<strong class="white-text bold">not</strong>
+				<span class="white-text  thin">found</span>
+			</p>
+		</div>
+		<div class="col s12 center-align">
+			<a href="/new_resume" class="btn-large white teal-text text-lighten-1">Generate one!</a>
+		</div>
+
+	</div>
+</div>
+
+		
+		
 	{% endif %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">NITT Resume Builder</h5>
+                <p class="grey-text text-lighten-4">Made by Spider</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../logout">Log Out</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Connect with 
+            <a class="grey-text text-lighten-4 right" href="http://spider.nitt.edu">Spider</a>!
+            </div>
+          </div>
+        </footer>
 {% endblock %}

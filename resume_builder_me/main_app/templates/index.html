@@ -11,9 +11,56 @@
 		</div>
 	</div>
 <div class="col s12 center-align">
-	<a class="waves-effect waves-light btn-large white teal-text text-lighten 1 ">Make your own Resume!</a>
+	<a class="waves-effect waves-light btn-large white teal-text text-lighten 1 " href="/nre_resume">Make your own Resume!</a>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </div>
 
 
 </div>
-{% endblock %}
+<br>
+<br>
+<br>
+
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">NITT Resume Builder</h5>
+                <p class="grey-text text-lighten-4">Made by Spider</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about">About</a></li>
+                  {% if not user.is_authenticated %}
+                  <li><a class="grey-text text-lighten-3" href="../logout">Log Out</a></li>
+                   {% endif %}
+        
+        {% if user.is_authenticated %}
+        <li><a class="grey-text text-lighten-3" href="../signin">Log In</a></li>
+        {% endif %}
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Connect with 
+            <a class="grey-text text-lighten-4 right" href="http://spider.nitt.edu">Spider</a>!
+            </div>
+          </div>
+        </footer>
+        {% endblock %}

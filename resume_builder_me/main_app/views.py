@@ -26,7 +26,7 @@ def signin(request):
 def logout_view(request):
 	if request.user.is_authenticated():
 		logout(request)
-	return HttpResponse("You are logged out")
+	return render(request, 'logout.html')
 
 def about(request):
 	return render(request, 'about.html')
