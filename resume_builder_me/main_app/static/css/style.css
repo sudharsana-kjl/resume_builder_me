@@ -1,0 +1,23 @@
+.parallax-container {
+      height: 500px;
+    }
+// Class for when element is above threshold
+  .pin-top {
+    position: relative;
+  }
+
+  // Class for when element is below threshold
+  .pin-bottom {
+    position: relative;
+  }
+
+  // Class for when element is pinned
+  .pinned {
+    position: fixed !important;
+  }
+  #mySVG {
+  position: fixed;
+  top: 15%;
+  z-index:10;
+}
+

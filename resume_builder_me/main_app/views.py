@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import Resume, Project
-from .forms import ResumeForm, ProjectFormSet
+from .models import Resume, Project, Gpa
+from .forms import ResumeForm, ProjectFormSet, GpaFormSet
 
 
 
@@ -45,16 +45,25 @@ def my_resume(request):
 def new_resume(request):
 	if request.user.is_authenticated:
 		form = ResumeForm()
-		formset = ProjectFormSet(instance=Resume())
+		formset_project = ProjectFormSet(instance=Resume())
+		formset_gpa = GpaFormSet(instance=Resume())
 		if request.method == "POST":
 			form = ResumeForm(request.POST)
-			if form.is_valid():
-				resume = form.save()
-				formset = ProjectFormSet(request.POST,request.FILES,instance=resume)
-				if formset.is_valid():
-					formset.save()
-					return HttpResponse("Your resume was saved")
-		return render(request, 'new_resume.html', {'form' : form, 'formset' : formset})
+			formset_project = ProjectFormSet(request.POST,request.FILES,instance=resume)
+				#if formset_project.is_valid():
+			formset_gpa = GpaFormSet(request.POST, request.FILES,instance=resume)
+			if formset_gpa.is_valid() and formset_project.is_valid():
+				
+				
+				if form.is_valid():
+					  formset_gpa.save()
+					  formset_project.save()
+					  resume = form.save()
+					  return HttpResponse("Your resume was saved")
+
+
+				return render(request, 'new_resume.html', {'form' : form, 'formset_project' : formset_project, 'formset_gpa': formset_gpa})	  
+		return render(request, 'new_resume.html', {'form' : form, 'formset_project' : formset_project, 'formset_gpa': formset_gpa})
 			
 	return HttpResponse("Not valid")
 

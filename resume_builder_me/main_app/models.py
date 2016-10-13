@@ -61,6 +61,27 @@ class Project(models.Model):
 	end_date = models.DateField(default=timezone.now(),blank=True,null=True)
 	resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
 
+	
+
 	def __str__(self):
 		return self.title
+
+
+class Gpa(models.Model):
+	SEM_CHOICES = (
+		('I', 'Semester I'),
+		('II', 'Semester II'),
+		('III','Semester III'),
+		('IV','Semester IV'),
+		('V','Semester V'),
+		('VI','Semester VI'),
+		('VII','Semester VII'),
+		('VIII','Semester VIII'),
+	)
+	sem_no = models.CharField(max_length=20,choices=SEM_CHOICES,unique=True)
+	gpa = models.CharField(max_length=5)
+	resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.sem_no
 

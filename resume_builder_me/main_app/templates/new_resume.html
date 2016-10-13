@@ -1,30 +1,76 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+<!--{% load materializecss %}-->
 {% block content %}
 <html>
 <body>
- <h1>New resume</h1>
-    <form method="POST" class="post-form" action = "/new_resume" enctype="multipart/form-data">{% csrf_token %}
-        <div style="width:50%; float:left;">
-        {{ form.as_p }}
+ <!--<h1>New resume</h1>-->
+ <div class="container">
+    <form method="POST" class="post-form" action = "/new_resume" enctype="multipart/form-data" >{% csrf_token %}
+        <div class="row">
+        <div class="col s12 card white" style="margin-top:12%;margin-left:4%;padding:2%;">
+        {{ form|materializecss }}
         <button type="submit" class="save btn btn-default" id="submit-btn">Save</button>
-    </div>
+        </div>
+        </div>
+</div>
+<div class="container">
+
+    <div clas="row" style="float:left">
+        
         <div id="abc" >
-        {{ formset.management_form }}
-                {{ formset.non_form_errors }}
-                <h4>Projects</h4> <button onclick="myfunc()">
-                    <img src="{% static 'images/add-icon.png' %}" style="height:3em; width:3em;">
+        {{ formset_project.management_form }}
+                {{ formset_project.non_form_errors }}
+                <h4>Projects</h4> <button onclick="myfunc()" class="white btn-floating btn-large waves-effect waves-light ">
+                   <i class="material-icons left teal lighten-1">add</i>
+                   <!-- <img src="{% static 'images/add-icon.png' %}" style="height:3em; width:3em;">-->
                 </button>
                 
-                    {% for projectform in formset %}
-        <div class='formset' style='visibility: hidden;'>
+                    {% for projectform in formset_project %}
+                    <div class='formset' style='visibility: hidden;'>
+                <div class="col s3 card white" style="margin-top:2%;margin-left:2%;padding:2%;">
+                
                     {{ projectform.as_p }}
                     
-                    </div>
+                </div>
+                </div>
          {% endfor %}
       
         
+        
+        </div>
     </div>
+    <div class="row" style="float:left">
+        
+            {{ formset_gpa.management_form }}
+                {{ formset_gpa.non_form_errors }}
+                <h4>CGPA</h4> <button onclick="myfunc_gpa()" class="white btn-floating btn-large waves-effect waves-light "><i class="material-icons left teal lighten-1">add</i>
+                    
+                </button>
+                
+                    {% for gpaform in formset_gpa %}
+                    <div class='formset_gpa' style='visibility: hidden;'>
+                        <div class="col s3 card white" style="margin-top:4%;margin-left:8%;width:30%;padding:2%;position:relative;width:200%;">
+                    {{ gpaform.as_p }}
+                    </div>
+                    </div>
+            {% endfor %}
+        
+    </div>
+</div>
+
+     <!--{{ formset_project.management_form }}
+                {{ formset_project.non_form_errors }}
+                {% for projectform in formset_project %}
+                <div class="inline-form prefix">
+                    {{ projectform.as_p }}
+    </div>
+    {% endfor %}
+    <div class="new-inline">
+        <input type="button" class="add-inline" value="Add another form" />
+</div>-->
+
+    
     </form>
     <script>
     //var btn = document.getElementbyId("submit-btn");
@@ -33,24 +79,85 @@
       //   ";
 
     var i=0;
+    var i1=0;
     var x = document.querySelectorAll(".formset");
+    var x1 = document.querySelectorAll(".formset_gpa");
+
+    
     //var div = document.createElement("div");
    // div.innerHTML = "";
    // x[0].style.backgroundColor = "red";
    x[0].style.visibility = "visible";
+   x1[0].style.visibility = "visible";
+   ++i1;++i;
 //console.log(x[0]);
-i++;
+
 function myfunc(){
     if(i==4)
         alert("Max four projects are allowed");
     x[i].style.visibility = "visible";
-    i++;
+    ++i;
+}
+function myfunc_gpa(){
+    if(i1==8)
+        alert("Max eight sem cpa are allowed");
+    x1[i1].style.visibility = "visible";
+    ++i1;
+}
+$(document).ready(function() {
+    $('select').material_select();
+    $('date-picker').material_datepicker();
+ /*$('.datepicker').pickadate({
+
+        selectYears: 16, // Creates a dropdown of 15 years to control year
+        format: 'yyyy-mm-dd'
+    });*/
+ $('.datepicker').pickadate({
+    onSet: function( arg ){
+        if ( 'select' in arg ){ //prevent closing on selecting month/year
+            this.close();
+        }
+    }
+});
+});
+
+/*function add_inline_form(prefix) {
+    var count = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val(), 10);
+    var last_form = $('.' + prefix + ':last');
+
+    var new_form = last_form.clone(false).html(last_form.html().replace(
+          new RegExp(prefix + '-\\\\d-', 'g'), prefix + '-' + count + '-'));
+    new_form.find('input[type="text"], textarea').each(function () {
+        $(this).val('');
+    });
+    new_form.hide().insertAfter(last_form).slideDown(300);
+
+    // Update the total form count
+    $('#id_' + prefix + '-TOTAL_FORMS').val(count + 1);
+
+    // re-initialise triggers
+
+    return false;
 }
 
+var regex = /(?:inline\-form) ([\\w\-]*) (?:add|existing)/;
+$('.add-inline').each(function () {
+    var match = regex.exec($(this).closest('.body').find('.inline-form').attr('class'));
+    if (match && match.length > 1) {
+        $(this).click(function () {
+            return add_inline_form(match[1]);
+        });
+    }
+});*/
+
+
 </script>
-{% endblock %}
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
 </body>
 </html>
+{% endblock %}
 
 
 
